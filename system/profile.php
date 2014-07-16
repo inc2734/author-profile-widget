@@ -83,26 +83,11 @@ class Author_Profile_Widget_Profile extends Author_Profile_Widget_Base {
 			$instance = $this->_parse_options( $instance );
 			echo $args['before_widget'];
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-			echo preg_replace_callback( '/\{(.+)\}/',
-				array( $this, '_parse_template' ),
+			echo do_shortcode( sprintf(
+				'[apw-profile]%s[/apw-profile]',
 				$instance['template']
-			);
+			) );
 			echo $args['after_widget'];
 		}
-	}
-	public function _parse_template( $matches ) {
-		$user_id = get_the_author_meta( 'ID' );
-		if ( is_author() ) {
-			global $author;
-			$user_id = $author;
-		}
-		if ( preg_match( '/^avatar ?(\d+)?$/', $matches[1], $reg ) ) {
-			$size = '';
-			if ( !empty( $reg[1] ) ) {
-				$size = $reg[1];
-			}
-			return get_avatar( $user_id, $size );
-		}
-		return get_the_author_meta( $matches[1], $user_id );
 	}
 }

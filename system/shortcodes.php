@@ -15,7 +15,49 @@ Class Author_Profile_Widget_Shortcodes {
 	 * @param array $atts ショートコードの属性値
 	 */
 	public function __construct() {
+		add_shortcode( 'apw-profile', array( $this, 'profile_shortcode' ) );
 		add_shortcode( 'apw-list', array( $this, 'list_shortcode' ) );
+	}
+
+	/**
+	 * profile_shortcode
+	 * @param array $atts ショートコードの属性値
+	 */
+	public function profile_shortcode( $atts, $template = '' ) {
+		if ( empty( $template ) ) {
+			$template = '
+<dl class="author-profile vcard">
+<dt class="avatar">{avatar 100}</dt>
+<dt class="fn">{display_name}</dt>
+<dd>{description}</dd>
+</dl>';
+		}
+		echo preg_replace_callback( '/\{(.+)\}/',
+			array( $this, 'parse_profile_template' ),
+			$template
+		);
+	}
+
+	/**
+	 * parse_profile_template
+	 * profile ショートコードの template を解析・置換
+	 * @param array $matches
+	 * @return string
+	 */
+	private function parse_profile_template( $matches ) {
+		$user_id = get_the_author_meta( 'ID' );
+		if ( is_author() ) {
+			global $author;
+			$user_id = $author;
+		}
+		if ( preg_match( '/^avatar ?(\d+)?$/', $matches[1], $reg ) ) {
+			$size = '';
+			if ( !empty( $reg[1] ) ) {
+				$size = $reg[1];
+			}
+			return get_avatar( $user_id, $size );
+		}
+		return get_the_author_meta( $matches[1], $user_id );
 	}
 
 	/**
