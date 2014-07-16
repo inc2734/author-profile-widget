@@ -32,7 +32,7 @@ Class Author_Profile_Widget_Shortcodes {
 <dd>{description}</dd>
 </dl>';
 		}
-		echo preg_replace_callback( '/\{(.+)\}/',
+		return preg_replace_callback( '/\{(.+)\}/',
 			array( $this, 'parse_profile_template' ),
 			$template
 		);
