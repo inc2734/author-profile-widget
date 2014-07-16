@@ -1,26 +1,12 @@
 <?php
 /**
  * Name: Author Profile Widget List
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: inc2734
  * Created : July 1, 2014
- * Modified:
- * License: GPL2
- *
- * Copyright 2014 Takashi Kitajima (email : inc@2inc.org)
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * Modified: July 16, 2014
+ * License: GPLv2
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 class Author_Profile_Widget_List extends Author_Profile_Widget_Base {
 
@@ -159,18 +145,13 @@ class Author_Profile_Widget_List extends Author_Profile_Widget_Base {
 		$instance = $this->_parse_options( $instance );
 		echo $args['before_widget'];
 		echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-		$users = get_users( array(
-			'exclude' => array( $instance['excludes'] ),
-			'orderby' => $instance['orderby'],
-			'order' => $instance['order'],
+		echo do_shortcode( sprintf ( 
+			'[apw-list size="%d" orderby="%s" order="%s" excludes="%s"]',
+			$instance['size'],
+			$instance['orderby'],
+			$instance['order'],
+			$instance['excludes']
 		) );
-		?>
-		<ul class="authors-list">
-			<?php foreach ( $users as $user ) : ?>
-			<li><a href="<?php echo esc_url( get_author_posts_url( $user->ID, $user->user_nicename ) ); ?>" title="<?php echo esc_attr( $user->display_name ); ?>"><?php echo get_avatar( $user->ID, $instance['size'], '', $user->display_name ); ?></a></li>
-			<?php endforeach; ?>
-		</ul>
-		<?php
 		echo $args['after_widget'];
 	}
 }

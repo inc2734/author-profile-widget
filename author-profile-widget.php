@@ -41,6 +41,7 @@ class Author_Profile_Widget {
 		include_once( plugin_dir_path( __FILE__ ) . 'system/widget.php' );
 		include_once( plugin_dir_path( __FILE__ ) . 'system/profile.php' );
 		include_once( plugin_dir_path( __FILE__ ) . 'system/list.php' );
+		include_once( plugin_dir_path( __FILE__ ) . 'system/shortcodes.php' );
 
 		add_action( 'show_user_profile', array( $this, 'edit_user_profile' ) );
 		add_action( 'edit_user_profile', array( $this, 'edit_user_profile' ) );
