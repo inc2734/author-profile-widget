@@ -36,7 +36,7 @@ class Author_Profile_Widget {
 	 */
 	public function plugins_loaded() {
 		$this->domain = Author_Profile_Widget_Config::DOMAIN;
-		load_plugin_textdomain( MWF_Config::DOMAIN, false, basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( $this->domain, false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 		add_action( 'show_user_profile', array( $this, 'edit_user_profile' ) );
 		add_action( 'edit_user_profile', array( $this, 'edit_user_profile' ) );

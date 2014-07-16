@@ -28,7 +28,7 @@ class Author_Profile_Widget_Profile extends Author_Profile_Widget_Base {
 </dl>',
 		);
 
-		$this->WP_Widget( 'author-profile-widget-profile', __( 'Profile', $this->domain ), array(
+		$this->WP_Widget( 'author-profile-widget-profile', __( 'Author profile', $this->domain ), array(
 			'classname'   => 'author-profile-widget-profile',
 			'description' => __( 'Author profile', $this->domain )
 		) );
@@ -56,7 +56,7 @@ class Author_Profile_Widget_Profile extends Author_Profile_Widget_Base {
 			?>
 			<label for="<?php echo esc_attr( $user_id ); ?>"><?php _e( 'Template', $this->domain ); ?>:</label>
 			<textarea id="<?php echo esc_attr( $user_id ); ?>" name="<?php echo esc_attr( $user_name ); ?>" class="widefat" rows="8"><?php echo $instance['template']; ?></textarea>
-			<span class="description"><?php _e( 'you can use "<a href="http://codex.wordpress.org/Function_Reference/the_author_meta" target="?blank">the_author_meta</a>" field. e.g {user_login}', $this->domain ); ?></span><br />
+			<span class="description"><?php _e( 'you can use "<a href="http://codex.wordpress.org/Function_Reference/the_author_meta" target="_blank">the_author_meta</a>" field. e.g {user_login}', $this->domain ); ?></span><br />
 			<span class="description"><?php _e( 'An avatar can also be displayed. e.g {avatar}, {avatar 95}', $this->domain ); ?></span>
 		</p>
 		<?php

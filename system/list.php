@@ -69,7 +69,7 @@ class Author_Profile_Widget_List extends Author_Profile_Widget_Base {
 			$size_id = $this->get_field_id( 'size' );
 			$size_name = $this->get_field_name( 'size' );
 			?>
-			<label for="<?php echo esc_attr( $size_id ); ?>">Size:</label>
+			<label for="<?php echo esc_attr( $size_id ); ?>"><?php _e( 'Size', $this->domain ); ?>:</label>
 			<input type="text" value="<?php echo esc_attr( $instance['size'] ); ?>" id="<?php echo esc_attr( $size_id ); ?>" name="<?php echo esc_attr( $size_name ); ?>" size="4" maxlength="4" />px
 		</p>
 		<p>
