@@ -37,11 +37,20 @@ class Author_Profile_Widget {
 	 * __construct
 	 */
 	public function __construct() {
+		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 		include_once( plugin_dir_path( __FILE__ ) . 'system/config.php' );
 		include_once( plugin_dir_path( __FILE__ ) . 'system/widget.php' );
 		include_once( plugin_dir_path( __FILE__ ) . 'system/profile.php' );
 		include_once( plugin_dir_path( __FILE__ ) . 'system/list.php' );
 		include_once( plugin_dir_path( __FILE__ ) . 'system/shortcodes.php' );
+	}
+
+	/**
+	 * plugins_loaded
+	 */
+	public function plugins_loaded() {
+		$this->domain = Author_Profile_Widget_Config::DOMAIN;
+		load_plugin_textdomain( MWF_Config::DOMAIN, false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 		add_action( 'show_user_profile', array( $this, 'edit_user_profile' ) );
 		add_action( 'edit_user_profile', array( $this, 'edit_user_profile' ) );
@@ -50,8 +59,7 @@ class Author_Profile_Widget {
 		add_action( 'widgets_init', array( $this, 'widget' ) );
 		add_action( 'pre_user_query', array(  $this, 'extended_user_search' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_script' ) );
-
-		$this->domain = Author_Profile_Widget_Config::DOMAIN;
+		$Author_Profile_Widget_Shortcodes = new Author_Profile_Widget_Shortcodes();
 	}
 
 	/**

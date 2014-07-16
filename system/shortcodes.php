@@ -44,4 +44,3 @@ Class Author_Profile_Widget_Shortcodes {
 		<?php
 	}
 }
-$Author_Profile_Widget_Shortcodes = new Author_Profile_Widget_Shortcodes();
