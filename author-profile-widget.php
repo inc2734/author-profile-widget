@@ -3,7 +3,7 @@
  * Plugin Name: Author Profile Widget
  * Plugin URI: https://github.com/inc2734/author-profile-widget
  * Description: Author Profile Widget add authors list widget and profile widget.
- * Version: 0.3.8
+ * Version: 0.4.0
  * Author: inc2734
  * Author URI: http://2inc.org
  * Created : July 1, 2014
