@@ -35,13 +35,20 @@ Class Author_Profile_Widget_Shortcodes {
 			'orderby' => $atts['orderby'],
 			'order' => $atts['order'],
 		) );
-		?>
-		<ul class="authors-list">
-			<?php foreach ( $users as $user ) : ?>
-			<li><a href="<?php echo esc_url( get_author_posts_url( $user->ID, $user->user_nicename ) ); ?>" title="<?php echo esc_attr( $user->display_name ); ?>"><?php echo get_avatar( $user->ID, $atts['size'], '', $user->display_name ); ?></a></li>
-			<?php endforeach; ?>
-		</ul>
-		<?php
+
+		$items = '';
+		foreach ( $users as $user ) {
+			$items .= sprintf(
+				'<li><a href="%s" title="%s">%s</a></li>',
+				esc_url( get_author_posts_url( $user->ID, $user->user_nicename ) ),
+				esc_attr( $user->display_name ),
+				get_avatar( $user->ID, $atts['size'], '', $user->display_name )
+			);
+		}
+		return sprintf(
+			'<ul class="authors-list">%s</ul>',
+			$items
+		);
 	}
 }
 $Author_Profile_Widget_Shortcodes = new Author_Profile_Widget_Shortcodes();
