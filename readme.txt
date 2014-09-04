@@ -4,7 +4,7 @@ Donate link: http://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: plugin, widget, profile
 Requires at least: 3.9.1
 Tested up to: 3.9.1
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,9 @@ You can also use shortcodes.
 1. screenshot-2.png
 
 == Changelog ==
+
+= 0.4.1 =
+* Fix a bug that does not appear correctly if put more than one {hoge} on one line.
 
 = 0.4.0 =
 * Add author profile shortcode.

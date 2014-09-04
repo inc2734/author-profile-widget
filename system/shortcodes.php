@@ -1,10 +1,10 @@
 <?php
 /**
  * Name: Author Profile Widget Shortcodes
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: inc2734
  * Created : July 16, 2014
- * Modified:
+ * Modified: September 3, 2014
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -32,7 +32,7 @@ Class Author_Profile_Widget_Shortcodes {
 <dd>{description}</dd>
 </dl>';
 		}
-		return preg_replace_callback( '/\{(.+)\}/',
+		return preg_replace_callback( '/\{(.+?)\}/',
 			array( $this, 'parse_profile_template' ),
 			$template
 		);
